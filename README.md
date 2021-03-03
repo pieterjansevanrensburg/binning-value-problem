@@ -10,6 +10,6 @@ If we add an index to the floating point numbers such that ![formula](https://re
 ![formula](https://render.githubusercontent.com/render/math?math=j%20%20\epsilon%20B) where j indicates which bin the floating point value has been place in, our goal can be expressed as follows:
 
 We wish to minimize the expression:
-![formula](https://render.githubusercontent.com/render/math?math=\frac{1}{n}\sum_{j=1}^{n}O((\sum_{i=1}^{m}f_{ij})-v_i))
+![formula](https://render.githubusercontent.com/render/math?math=\frac{1}{n}\sum_{j=1}^{n}O((\sum_{i=1}^{m}f_{ij})-v_j))
 
 This python program seeks to solve this problem using a divide-and-conquer algorithm to create a recursive tree and by pruning sub-optimal branches of said tree.

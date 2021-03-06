@@ -2,43 +2,56 @@
 
 ## Overview
 
-For this problem, we are given a set of numbers, and a set of targets.
+For this problem, we are given a set of numbers, and a set of bins with target values.
 
-We wish to sum the given set of numbers in such a way to create a new set.
+We wish to allocate the given set of numbers, to the bins, to minimize the difference between the sum of the numbers in each bin and said bins target value across all bins.
 
-This is done with the intention of minimizing the difference between the new set of numbers, and the set of targets,
-according to some objective function.
+Furthermore, each value can only to one bin or no bin at all.
+
+This is done through representing the above problem as a linear programming problem and using discrete-optimization to minimize the differences according to some objective function.
 
 ## Table of Contents
 
 ## Mathematical Definition
 
-Suppose that we are given a set of bins,
-![formula](https://render.githubusercontent.com/render/math?math=B%20=%20\{1,%202,%20\ldots,%20n\}).
+Suppose we are given a 1 x n vector of floating-point numbers:
 
-Each of which has been assigned a value, given by the
-set ![formula](https://render.githubusercontent.com/render/math?math=V%20=%20\{v_1,%20v_2,%20\ldots,%20v_n\})
-where ![formula](https://render.githubusercontent.com/render/math?math=v_i) is the value assigned to
-bin ![formula](https://render.githubusercontent.com/render/math?math=i).
+F = {f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub>, ..., f<sub>n</sub>}
 
-Next, suppose we are given an array of floating-point
-numbers ![formula](https://render.githubusercontent.com/render/math?math=F%20=%20\{f_1,%20,f_2,%20,\ldots,%20f_m\}), and
-an objective function ![formula](https://render.githubusercontent.com/render/math?math=O). The problem which we wish to
-solve is to place the values of ![formula](https://render.githubusercontent.com/render/math?math=F) into each of the
-bins, to minimize the average Objective function across the difference between the sum of the values within each bin,
-and the value assigned to each bin.
 
-If we add an index to the floating-point numbers such
-that ![formula](https://render.githubusercontent.com/render/math?math=f_i)
-becomes ![formula](https://render.githubusercontent.com/render/math?math=f_{ij})
-where ![formula](https://render.githubusercontent.com/render/math?math=i%20%20\epsilon%20\{1,%202,%20\ldots,%20m\}), and
-![formula](https://render.githubusercontent.com/render/math?math=j%20%20\epsilon%20B) where j indicates which bin the
-floating-point value has been place in, our goal can be expressed as follows:
+Furthermore, we are also given a set of bins:
 
-We wish to minimize the expression:
-![formula](https://render.githubusercontent.com/render/math?math=\frac{1}{n}\sum_{j=1}^{n}O((\sum_{i=1}^{m}f_{ij})-v_j))
+B = {1, 2, 3, ..., m} 
 
-## Solution
+where j represents the j'th bin and m is the total number of bins
 
-This python program seeks to solve this problem using a divide-and-conquer algorithm to create a recursive tree. The
-sub-optimal branches of said tree are pruned, and the values of the sub-optimal branches are reassigned.
+
+Also, suppose that we are given a 1 x m vector of target values for the set of bins: 
+
+T = {t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub>, ..., t<sub>m</sub>}
+
+where t<sub>j</sub> represents the target value of the j'th bin.
+
+
+Finally, we are also given an objective function O.
+
+
+Based on the above, the problem which we wish to solve is to place the values of F into each of the bins in B so as to minimize the value of the objective function O across the differences between the sum of the values within each bin and the target value assigned to each bin. Furthermore, each value in F can only be allocated once or not be allocated at all.
+
+
+To solve this, we define the binary matrix X, where the elements of X can be described as follows:
+
+x<sub>i,j</sub> = 1 &hArr; f<i> is placed in bin j
+x<sub>i,j</sub> = 0 &hArr; f<i> is not placed in bin j
+
+&sigma;<sub>j</sub>x<sub>i,j</sub> = 1
+
+&forall; i &isin; {1, 2, 3, ..., n}, &forall; j &isin; B
+
+With the above formulation, our problem can be expressed as the following binary linear programming problem:
+
+minimize: O(FX - T)
+
+with respect to the following constraints:
+
+&sigma;<sub>j</sub>x<sub>i,j</sub> = 1 &forall; i &isin; {1, 2, 3, ..., n}, &forall; j &isin; B

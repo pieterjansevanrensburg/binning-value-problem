@@ -4,9 +4,7 @@
 
 For this problem, we are given a set of numbers, and a set of bins with target values.
 
-We wish to allocate the given set of numbers, to the bins, to minimize the difference between the sum of the numbers in each bin and said bins target value across all bins.
-
-Furthermore, each value can only to one bin or no bin at all.
+We wish to allocate the given set of numbers, to the bins, to minimize the difference between the sum of the numbers in each bin and said bins target value across all bins. Furthermore, each value can only to one bin or no bin at all.
 
 This is done through representing the above problem as a linear programming problem and using discrete-optimization to minimize the differences according to some objective function.
 
@@ -23,7 +21,7 @@ Furthermore, we are also given a set of bins:
 
 B = {1, 2, 3, ..., m} 
 
-where j represents the j'th bin and m is the total number of bins
+where j represents the j'th bin and m is the total number of bins.
 
 
 Also, suppose that we are given a 1 x m vector of target values for the set of bins: 
@@ -41,8 +39,9 @@ Based on the above, the problem which we wish to solve is to place the values of
 
 To solve this, we define the binary matrix X, where the elements of X can be described as follows:
 
-x<sub>i,j</sub> = 1 &hArr; f<sub>i</sub> is placed in bin j
-x<sub>i,j</sub> = 0 &hArr; f<sub>i</sub> is not placed in bin j
+x<sub>i,j</sub> = 1 &hArr; f<sub>i</sub> is placed in bin j or
+
+x<sub>i,j</sub> = 0 &hArr; f<sub>i</sub> is not placed in bin j and
 
 &sigma;<sub>j</sub>x<sub>i,j</sub> = 1
 
@@ -54,4 +53,16 @@ minimize: O(FX - T)
 
 with respect to the following constraints:
 
-&sigma;<sub>j</sub>x<sub>i,j</sub> = 1 &forall; i &isin; {1, 2, 3, ..., n}, &forall; j &isin; B
+&Sigma;<sub>j</sub>x<sub>i,j</sub> = 1 &forall; i &isin; {1, 2, 3, ..., n}, &forall; j &isin; B
+
+## Solution
+
+This program, given a list of floating-point numbers and a list of target values, automatically generates the above formulation of the problem and then makes use of the [PuLP](https://pypi.org/project/PuLP/) python module to find the optimal solution.
+
+## Dependancies
+* [PuLP](https://pypi.org/project/PuLP/)
+* [numpy](https://pypi.org/project/numpy/)
+* A LP solver for the PuLP frontend to call (options include: COINMP, CPLEX, GLPK, GUROBI, ...)
+
+## Contributors
+* [Pieter Janse van Rensburg](pieterjvr50@gmail.com)

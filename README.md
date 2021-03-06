@@ -9,6 +9,10 @@ We wish to allocate the given set of numbers, to the bins, to minimize the diffe
 This is done through representing the above problem as a linear programming problem and using discrete-optimization to minimize the differences according to some objective function.
 
 ## Table of Contents
+* [Mathematical Definition](#mathematical-definition)
+* [Solution](#solution)
+* [Dependencies](#dependencies)
+* [Contributors](#contributors)
 
 ## Mathematical Definition
 
@@ -59,7 +63,7 @@ with respect to the following constraints:
 
 This program, given a list of floating-point numbers and a list of target values, automatically generates the above formulation of the problem and then makes use of the [PuLP](https://pypi.org/project/PuLP/) python module to find the optimal solution.
 
-## Dependancies
+## Dependencies
 * [PuLP](https://pypi.org/project/PuLP/)
 * [numpy](https://pypi.org/project/numpy/)
 * A LP solver for the PuLP frontend to call (options include: COINMP, CPLEX, GLPK, GUROBI, ...)

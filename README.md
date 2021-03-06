@@ -41,8 +41,8 @@ Based on the above, the problem which we wish to solve is to place the values of
 
 To solve this, we define the binary matrix X, where the elements of X can be described as follows:
 
-x<sub>i,j</sub> = 1 &hArr; f<i> is placed in bin j
-x<sub>i,j</sub> = 0 &hArr; f<i> is not placed in bin j
+x<sub>i,j</sub> = 1 &hArr; f<sub>i</sub> is placed in bin j
+x<sub>i,j</sub> = 0 &hArr; f<sub>i</sub> is not placed in bin j
 
 &sigma;<sub>j</sub>x<sub>i,j</sub> = 1
 

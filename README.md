@@ -16,7 +16,7 @@ This is done through representing the above problem as a linear programming prob
 
 Suppose we are given a 1 x n vector of floating-point numbers:
 
-F = {f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub>, ..., f<sub>n</sub>}
+F = [f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub>, ..., f<sub>n</sub>]
 
 
 Furthermore, we are also given a set of bins:
@@ -28,7 +28,7 @@ where j represents the j'th bin and m is the total number of bins
 
 Also, suppose that we are given a 1 x m vector of target values for the set of bins: 
 
-T = {t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub>, ..., t<sub>m</sub>}
+T = [t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub>, ..., t<sub>m</sub>]
 
 where t<sub>j</sub> represents the target value of the j'th bin.
 

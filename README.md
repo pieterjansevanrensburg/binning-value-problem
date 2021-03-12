@@ -47,7 +47,7 @@ x<sub>i,j</sub> = 1 &hArr; f<sub>i</sub> is placed in bin j or
 
 x<sub>i,j</sub> = 0 &hArr; f<sub>i</sub> is not placed in bin j and
 
-&sigma;<sub>j</sub>x<sub>i,j</sub> = 1
+&Sigma;<sub>j</sub>x<sub>i,j</sub> = 1
 
 &forall; i &isin; {1, 2, 3, ..., n}, &forall; j &isin; B
 

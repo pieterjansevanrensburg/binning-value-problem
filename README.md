@@ -4,7 +4,7 @@
 
 For this problem, we are given a set of numbers, and a set of bins with target values.
 
-We wish to allocate the given set of numbers, to the bins, to minimize the difference between the sum of the numbers in each bin and said bins target value across all bins. Furthermore, each value can only to one bin or no bin at all.
+We wish to allocate the given set of numbers, to the bins, to minimize the difference between the sum of the numbers in each bin and said bin's target value across all bins. Furthermore, each value can only to one bin or no bin at all.
 
 This is done through representing the above problem as a linear programming problem and using discrete-optimization to minimize the differences according to some objective function.
 
